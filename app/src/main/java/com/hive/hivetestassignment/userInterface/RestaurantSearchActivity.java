@@ -106,14 +106,23 @@ public class RestaurantSearchActivity extends AppCompatActivity implements BaseA
         //TODO Handle the click.
     }
 
+    /**
+     * This function is used to hide the loader
+     */
     private void showLoader() {
         mActivityMainBinding.progressBar.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * This function is used to show the loader
+     */
     private void hideLoader() {
         mActivityMainBinding.progressBar.setVisibility(View.GONE);
     }
 
+    /**
+     * This function is used to call the restaurant list.
+     */
     public void afterEmailTextChanged(CharSequence s) {
         mRestaurantSearchViewModel.fetchRestaurantList(s.toString());
     }

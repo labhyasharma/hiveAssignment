@@ -65,6 +65,9 @@ public class RestaurantSearchViewModel extends BaseViewModel {
 
     }
 
+    /**
+     * This function is used to hit the Api.
+     */
     public void fetchRestaurantList(String searchKey) {
         APIRepository.getRepositoryInstance().getRestaurantList(searchKey).enqueue(apiGetRestaurantListCallBack);
     }
@@ -80,6 +83,10 @@ public class RestaurantSearchViewModel extends BaseViewModel {
         return adapter;
     }
 
+    /**
+     * This function is set the data to adapter after the
+     * sorting.
+     */
     public void setAdapter(List<RestaurantDataModel> restaurantList, boolean isAsc){
         if (isAsc) Collections.sort(restaurantList); else Collections.sort(restaurantList,Collections.reverseOrder());
         this.adapter.setRestaurantData(restaurantList);
@@ -88,10 +95,6 @@ public class RestaurantSearchViewModel extends BaseViewModel {
 
     public MutableLiveData<String> getSearchText() {
         return searchText;
-    }
-
-    public void setSearchText(String searchText) {
-        this.searchText.setValue(searchText);
     }
 
     public MutableLiveData<ApiObserverDataModel> getClientListFetchSuccess() {
