@@ -4,6 +4,7 @@ public class RestaurantDetailDataModel {
     private String id;
     private String name;
     private String average_cost_for_two;
+    private UserRatingDataModel user_rating;
 
     public String getId() {
         return id;
@@ -23,6 +24,14 @@ public class RestaurantDetailDataModel {
 
     public String getAverage_cost_for_two() {
         return average_cost_for_two;
+    }
+
+    public UserRatingDataModel getUser_rating() {
+        return user_rating;
+    }
+
+    public void setUser_rating(UserRatingDataModel user_rating) {
+        this.user_rating = user_rating;
     }
 
     public void setAverage_cost_for_two(String average_cost_for_two) {

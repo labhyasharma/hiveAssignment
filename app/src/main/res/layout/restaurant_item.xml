@@ -17,20 +17,30 @@
         android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:paddingBottom="@dimen/_8sdp"
+        android:paddingTop="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_4sdp">
+
+        <ImageView
+            android:id="@+id/iconFood"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/food"/>
 
         <TextView
             android:id="@+id/tvRestaurantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iconFood"
+            android:layout_marginStart="@dimen/_8sdp"
             android:text="@{model.restaurant.name}"
-            android:textSize="@dimen/_16sdp"
-            android:textColor="@color/red"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/_16sdp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iconFood"
+            android:layout_marginStart="@dimen/_8sdp"
             android:layout_below="@+id/tvRestaurantName"
             android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal">
@@ -51,6 +61,27 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_below="@+id/tvRestaurantName"
                 android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignParentEnd="true" >
+            
+            <ImageView
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:src="@drawable/star"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="@{model.restaurant.user_rating.aggregate_rating}"
+                android:textSize="@dimen/_12sdp" />
+
         </LinearLayout>
 
 
