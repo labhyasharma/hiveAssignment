@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/iconFood"
             android:layout_marginStart="@dimen/_8sdp"
+            android:gravity="center"
             android:layout_below="@+id/tvRestaurantName"
             android:layout_marginTop="@dimen/_4sdp"
             android:orientation="horizontal">
@@ -49,18 +50,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cost_for_two"
                 android:textSize="@dimen/_12sdp"
-                android:layout_below="@+id/tvRestaurantName"
-                android:textStyle="bold"/>
+                android:layout_below="@+id/tvRestaurantName" />
 
             <TextView
                 android:id="@+id/tvRestaurantPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{model.restaurant.average_cost_for_two}"
+                android:text="@{`₹ `+ model.restaurant.average_cost_for_two}"
                 android:textSize="@dimen/_12sdp"
+                android:textColor="@color/red"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:layout_below="@+id/tvRestaurantName"
-                android:textStyle="bold"/>
+                android:layout_below="@+id/tvRestaurantName" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,7 +69,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_alignParentEnd="true" >
-            
+
             <ImageView
                 android:layout_width="@dimen/_12sdp"
                 android:layout_height="@dimen/_12sdp"
