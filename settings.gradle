@@ -1,0 +1,2 @@
+rootProject.name='HiveTestAssignment'
+include ':app'

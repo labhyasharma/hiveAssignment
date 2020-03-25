@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">HiveTestAssignment</string>
+    <string name="search">Search</string>
+    <string name="cost_for_two">Cost for two:</string>
+    <string name="sort_by_price">Sort by price:</string>
+</resources>
