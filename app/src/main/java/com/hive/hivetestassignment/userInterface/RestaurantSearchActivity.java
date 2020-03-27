@@ -125,12 +125,6 @@ public class RestaurantSearchActivity extends AppCompatActivity implements BaseA
      * This function is used to call the restaurant list.
      */
     public void afterEmailTextChanged(CharSequence s) {
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mRestaurantSearchViewModel.fetchRestaurantList(s.toString());
-            }
-        }, 1000);
+        mRestaurantSearchViewModel.fetchRestaurantList(s.toString());
     }
 }
