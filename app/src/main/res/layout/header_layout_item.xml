@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="model"
+            type="com.hive.hivetestassignment.userInterface.RestaurantDataModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_8sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.header}"
+            android:textColor="@color/font_dark_blue_gray"
+            android:textSize="@dimen/_14sdp"/>
+
+    </RelativeLayout>
+</layout>

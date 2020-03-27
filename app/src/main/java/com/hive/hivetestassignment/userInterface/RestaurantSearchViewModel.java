@@ -17,7 +17,9 @@ import com.hive.hivetestassignment.utils.networkUtils.ApiObserverDataModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,11 +87,20 @@ public class RestaurantSearchViewModel extends BaseViewModel {
 
     /**
      * This function is set the data to adapter after the
-     * sorting.
+     * sorting. Also, iterating the map and creating the
+     * header based on their key.
      */
     public void setAdapter(List<RestaurantDataModel> restaurantList, boolean isAsc){
-        if (isAsc) Collections.sort(restaurantList); else Collections.sort(restaurantList,Collections.reverseOrder());
-        this.adapter.setRestaurantData(restaurantList);
+        List<RestaurantDataModel> newRestaurantList = new ArrayList<>();
+
+        for (Map.Entry<String, List<RestaurantDataModel>> entry : filterList(restaurantList).entrySet() ) {
+            newRestaurantList.add(new RestaurantDataModel(new RestaurantDetailDataModel(true),entry.getKey()));
+
+            if (isAsc) Collections.sort(entry.getValue()); else Collections.sort(entry.getValue(),Collections.reverseOrder());
+            newRestaurantList.addAll(entry.getValue());
+        }
+
+        this.adapter.setRestaurantData(newRestaurantList);
         this.adapter.notifyDataSetChanged();
     }
 
@@ -110,5 +121,32 @@ public class RestaurantSearchViewModel extends BaseViewModel {
         }
         restaurantList.setValue(restaurantData);
         restaurantListData = restaurantData;
+    }
+
+    /**
+     * This method is used to filter out the cuisines
+     * and based on that using a Hashmap to store the
+     * related restaurant objects based on cuisines as key.
+     *
+     * @param restaurantList list of restaurant
+     */
+    private HashMap<String, List<RestaurantDataModel>> filterList(List<RestaurantDataModel> restaurantList) {
+
+        HashMap<String, List<RestaurantDataModel>> filteredMap = new HashMap<>();
+        for (RestaurantDataModel restaurantDataModel : restaurantList) {
+            String cuisine = restaurantDataModel.getRestaurant().getCuisines();
+            if (cuisine.contains(",") && cuisine.split(",")[0] != null) {
+                cuisine = cuisine.split(",")[0];
+            }
+            if (!filteredMap.containsKey(cuisine)) {
+                List<RestaurantDataModel> filteredRestaurantList = new ArrayList<>();
+                filteredRestaurantList.add(restaurantDataModel);
+                filteredMap.put(cuisine,filteredRestaurantList);
+            } else {
+                List<RestaurantDataModel> filteredRestaurantList = filteredMap.get(cuisine);
+                filteredRestaurantList.add(restaurantDataModel);
+            }
+        }
+        return filteredMap;
     }
 }

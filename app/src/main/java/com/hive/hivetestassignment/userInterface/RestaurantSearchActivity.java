@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -124,6 +125,12 @@ public class RestaurantSearchActivity extends AppCompatActivity implements BaseA
      * This function is used to call the restaurant list.
      */
     public void afterEmailTextChanged(CharSequence s) {
-        mRestaurantSearchViewModel.fetchRestaurantList(s.toString());
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mRestaurantSearchViewModel.fetchRestaurantList(s.toString());
+            }
+        }, 1000);
     }
 }

@@ -5,6 +5,12 @@ public class RestaurantDetailDataModel {
     private String name;
     private String average_cost_for_two;
     private UserRatingDataModel user_rating;
+    private String cuisines;
+    private boolean header;
+
+    public RestaurantDetailDataModel(boolean header) {
+        this.header = header;
+    }
 
     public String getId() {
         return id;
@@ -36,5 +42,21 @@ public class RestaurantDetailDataModel {
 
     public void setAverage_cost_for_two(String average_cost_for_two) {
         this.average_cost_for_two = average_cost_for_two;
+    }
+
+    public String getCuisines() {
+        return cuisines;
+    }
+
+    public void setCuisines(String cuisines) {
+        this.cuisines = cuisines;
+    }
+
+    public boolean isHeader() {
+        return header;
+    }
+
+    public void setHeader(boolean header) {
+        this.header = header;
     }
 }

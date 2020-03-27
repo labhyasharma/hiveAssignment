@@ -2,6 +2,12 @@ package com.hive.hivetestassignment.userInterface;
 
 public class RestaurantDataModel implements Comparable{
     private RestaurantDetailDataModel restaurant;
+    private String header;
+
+    public RestaurantDataModel(RestaurantDetailDataModel restaurant,String header) {
+        this.restaurant = restaurant;
+        this.header = header;
+    }
 
     public RestaurantDetailDataModel getRestaurant() {
         return restaurant;
@@ -9,6 +15,14 @@ public class RestaurantDataModel implements Comparable{
 
     public void setRestaurant(RestaurantDetailDataModel restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
     }
 
     @Override
